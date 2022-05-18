@@ -1,0 +1,120 @@
+{
+  "version": "1.03",
+  "name": "custom.python.adtest",
+  "metricGroup": "tech.CustomADTest",
+  "type": "python",
+  "entity": "HOST",
+  "technologies": [],
+  "source": {
+    "package": "custom_adtest",
+    "className": "ADTest",
+    "activation": "Singleton"
+  },
+  "metrics": [
+    {
+      "timeseries": {
+        "key": "responseTime",
+        "unit": "Count",
+        "aggregation": "avg",
+        "displayname": "Active Directory - Response Time",
+        "dimensions": [
+          "DomainController"
+        ]
+      }
+    },
+    {
+      "timeseries": {
+        "key": "returnCode",
+        "unit": "Count",
+        "aggregation": "avg",
+        "displayname": "Active Directory - Return Code",
+        "dimensions": [
+          "DomainController"
+        ]
+      }
+    }
+  ],
+  "properties": [
+    {
+      "key": "user",
+      "type": "String"
+    },
+    {
+      "key": "password",
+      "type": "Password"
+    },
+    {
+      "key": "domainController",
+      "type": "String"
+    },
+    {
+      "key": "useGC",
+      "type": "Boolean"
+    },
+    {
+      "key": "limit",
+      "type": "Integer",
+      "defaultValue": 10
+    },
+    {
+      "key": "frequency",
+      "type": "Integer",
+      "defaultValue": 1
+    },
+    {
+      "key": "log_level",
+      "type": "Dropdown",
+      "dropdownValues": [
+        "INFO",
+        "DEBUG"
+      ],
+      "defaultValue": "INFO"
+    }
+  ],
+  "configUI": {
+    "displayName": "Active Directory DC Test",
+    "properties": [
+      {
+        "key": "user",
+        "displayName": "User Name",
+        "displayOrder": 1,
+        "displayHint": "AD user name for authentication"
+      },
+      {
+        "key": "password",
+        "displayName": "Password",
+        "displayOrder": 2,
+        "displayHint": "Password for AD user"
+      },
+      {
+        "key": "domainController",
+        "displayName": "Domain Controller",
+        "displayOrder": 3,
+        "displayHint": "Domain controller to query (optional)"
+      },
+      {
+        "key": "useGC",
+        "displayName": "Use Glocal Catalog",
+        "displayOrder": 4,
+        "displayHint": "Use global catalog instead of domain controller (optional)"
+      },
+      {
+        "key": "limit",
+        "displayName": "Limit Results",
+        "displayOrder": 5,
+        "displayHint": "Limit the results - 0 is no limit, maximum 1000 (optional)"
+      },
+      {
+        "key": "frequency",
+        "displayName": "Frequency (minutes)",
+        "displayHint": "Minimum 1 minute",
+        "displayOrder": 6
+      },
+      {
+        "key": "log_level",
+        "displayName": "Log Level",
+        "displayOrder": 7
+      }
+    ]
+  }
+}
